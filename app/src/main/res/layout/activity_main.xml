@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yijing.modelfan.widget.WechatRadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.yijing.modelfan.widget.WechatRadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:drawablePadding="3dp"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="3dp"
+            android:text="模特饭"
+            android:textColor="#999999"
+            app:defocus_icon="@mipmap/icon_tab_fun_u"
+            app:focus_color="#00aaee"
+            app:focus_icon="@mipmap/icon_tab_fun_s" />
+
+        <com.yijing.modelfan.widget.WechatRadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="3dp"
+            android:text="模特库"
+            android:textColor="#999999"
+            app:defocus_icon="@mipmap/icon_tab_ku_u"
+            app:focus_color="#00aaee"
+            app:focus_icon="@mipmap/icon_tab_ku_s" />
+
+        <com.yijing.modelfan.widget.WechatRadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="3dp"
+            android:text="发现"
+            android:textColor="#999999"
+            app:defocus_icon="@mipmap/icon_tab_find_u"
+            app:focus_color="#00aaee"
+            app:focus_icon="@mipmap/icon_tab_find_s" />
+
+        <com.yijing.modelfan.widget.WechatRadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="3dp"
+            android:text="我的"
+            android:textColor="#999999"
+            app:defocus_icon="@mipmap/icon_tab_me_u"
+            app:focus_color="#00aaee"
+            app:focus_icon="@mipmap/icon_tab_me_s" />
+    </com.yijing.modelfan.widget.WechatRadioGroup>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/radiogroup"
+        android:background="#999999" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/applayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/applayout"
+        android:layout_above="@id/line"></android.support.v4.view.ViewPager>
+
+</RelativeLayout>
