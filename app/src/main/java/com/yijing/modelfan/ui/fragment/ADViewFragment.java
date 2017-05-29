@@ -1,6 +1,7 @@
 package com.yijing.modelfan.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class ADViewFragment extends Fragment {
 
-    public static final String LOAD_TYPE ="loadType";
+    public static final String LOAD_TYPE = "loadType";
     public static final int FUN_HEAD_AD = 1;
     public static final int FUN_SMALL_AD = 2;
     public static final int KU_HEAD_AD = 3;
@@ -31,10 +32,11 @@ public class ADViewFragment extends Fragment {
     ViewPager mViewPage;
 
     int type;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments()!=null){
+        if (getArguments() != null) {
             type = getArguments().getInt(LOAD_TYPE);
         }
     }
@@ -42,18 +44,36 @@ public class ADViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        view = inflater.inflate(R.layout.layout_viewpage, null);
+        if (view == null) {
+            view = inflater.inflate(R.layout.layout_viewpage, null);
+            init();
+        }
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
+        return view;
+    }
+
+    @Nullable
+    @Override
+    public View getView() {
+        return view;
+    }
+
+    void init() {
+
         mViewPage = (ViewPager) view.findViewById(R.id.viewpager);
         imgs = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
 //            LayoutInflater.from(getActivity()).inflate(R.layout.item_head_ad,null);
-            ImageView imageView= (ImageView) LayoutInflater.from(getActivity()).inflate(R.layout.item_head_ad, null);
-           if (type==FUN_HEAD_AD){
-               imageView.setImageResource(R.mipmap.ad_fun1);
-           }else if(type == FUN_SMALL_AD){
-               imageView.setImageResource(R.mipmap.ad_fun2);
-           }
-            imageView.setTag(""+i);
+            ImageView imageView = (ImageView) LayoutInflater.from(getActivity()).inflate(R.layout.item_head_ad, null);
+            if (type == FUN_HEAD_AD) {
+                imageView.setImageResource(R.mipmap.ad_fun1);
+            } else if (type == FUN_SMALL_AD) {
+                imageView.setImageResource(R.mipmap.ad_fun2);
+            }
+            imageView.setTag("" + i);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,7 +91,7 @@ public class ADViewFragment extends Fragment {
 
             @Override
             public boolean isViewFromObject(View view, Object object) {
-                return  view == object;
+                return view == object;
             }
 
             @Override
@@ -81,10 +101,9 @@ public class ADViewFragment extends Fragment {
 
             @Override
             public View instantiateItem(ViewGroup container, int position) {
-                ((ViewPager)container).addView(imgs.get(position % imgs.size()), 0);
+                ((ViewPager) container).addView(imgs.get(position % imgs.size()), 0);
                 return imgs.get(position % imgs.size());
             }
         });
-        return view;
     }
 }

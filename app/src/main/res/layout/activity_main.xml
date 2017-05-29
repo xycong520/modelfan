@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/colorTabBG"
         android:orientation="horizontal">
 
         <com.yijing.modelfan.widget.WechatRadioButton
@@ -17,11 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
+            android:id="@+id/wrb_findTG"
             android:drawablePadding="3dp"
             android:gravity="center_horizontal"
             android:paddingBottom="5dp"
             android:paddingTop="3dp"
-            android:text="模特饭"
+            android:text="找通告"
             android:textColor="#999999"
             app:defocus_icon="@mipmap/icon_tab_fun_u"
             app:focus_color="#00aaee"
@@ -29,19 +31,20 @@
 
         <com.yijing.modelfan.widget.WechatRadioButton
             android:layout_width="0dp"
+            android:id="@+id/wrb_findMD"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawablePadding="3dp"
             android:gravity="center_horizontal"
             android:paddingBottom="5dp"
             android:paddingTop="3dp"
-            android:text="模特库"
+            android:text="找模特"
             android:textColor="#999999"
             app:defocus_icon="@mipmap/icon_tab_ku_u"
             app:focus_color="#00aaee"
             app:focus_icon="@mipmap/icon_tab_ku_s" />
 
-        <com.yijing.modelfan.widget.WechatRadioButton
+        <!--<com.yijing.modelfan.widget.WechatRadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,11 +56,12 @@
             android:textColor="#999999"
             app:defocus_icon="@mipmap/icon_tab_find_u"
             app:focus_color="#00aaee"
-            app:focus_icon="@mipmap/icon_tab_find_s" />
+            app:focus_icon="@mipmap/icon_tab_find_s" />-->
 
         <com.yijing.modelfan.widget.WechatRadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/wrb_me"
             android:layout_weight="1"
             android:drawablePadding="3dp"
             android:gravity="center_horizontal"
@@ -75,21 +79,9 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_above="@id/radiogroup"
-        android:background="#999999" />
+        android:background="#C8C8C8" />
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/applayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary" />
-
-    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/layout_title"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"

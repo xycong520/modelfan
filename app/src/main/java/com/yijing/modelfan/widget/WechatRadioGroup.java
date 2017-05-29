@@ -29,7 +29,7 @@ public class WechatRadioGroup extends RadioGroup implements ViewPager.OnPageChan
         super.onLayout(changed, l, t, r, b);
         for (int i = 0; i < getChildCount(); i++) {
             final int position = i;
-            getChildAt(i).setOnClickListener(new OnClickListener() {
+            /*getChildAt(i).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     setClickedViewChecked(position);
@@ -37,7 +37,7 @@ public class WechatRadioGroup extends RadioGroup implements ViewPager.OnPageChan
                         mViewPager.setCurrentItem(position, false);
                     }
                 }
-            });
+            });*/
         }
     }
 

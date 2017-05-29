@@ -8,9 +8,17 @@ public class BeanModelFun {
     int itemViewType;
     int id;
     String imageUrl;
+    int imgID;
     String textValue;
 
+    public void setImgID(int imgID) {
+        this.imgID = imgID;
+    }
 
+    public int getImgID() {
+
+        return imgID;
+    }
 
     public int getItemViewType() {
         return itemViewType;

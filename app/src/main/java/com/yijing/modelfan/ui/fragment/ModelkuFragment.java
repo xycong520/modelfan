@@ -1,6 +1,7 @@
 package com.yijing.modelfan.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,15 +23,27 @@ public class ModelkuFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_modelku, container, false);
-//        init();
+        if (view == null){
+            view = inflater.inflate(R.layout.fragment_modelku, container, false);
+            init();
+        }
+        ViewGroup parent = (ViewGroup)view.getParent();
+        if(parent != null) {
+            parent.removeView(view);
+        }
+        return view;
+    }
+
+    @Nullable
+    @Override
+    public View getView() {
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        init();
+
     }
 
     private void init() {

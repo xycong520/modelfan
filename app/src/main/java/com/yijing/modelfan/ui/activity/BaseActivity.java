@@ -1,10 +1,15 @@
 package com.yijing.modelfan.ui.activity;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.android.volley.RequestQueue;
 import com.yijing.modelfan.R;
@@ -50,9 +55,16 @@ public abstract class BaseActivity extends AppCompatActivity implements AppBarLa
         if (ab != null) {
             ab.setTitle(title);
         }
-
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onResume() {
@@ -93,4 +105,14 @@ public abstract class BaseActivity extends AppCompatActivity implements AppBarLa
     protected abstract void setRefreshEnabled(boolean enabled);
 
     protected abstract void cancelVolleyRequest(RequestQueue queue);
+
+    public static int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen",
+                "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 }

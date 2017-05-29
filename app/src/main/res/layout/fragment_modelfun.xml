@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/fragmentLayout"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvModelfun"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="match_parent" />
+
 
 </RelativeLayout>

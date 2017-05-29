@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#5C6166</color>
-    <color name="colorPrimaryDark">#38474F</color>
+    <color name="colorPrimary">#12B7F5</color>
+    <color name="colorPrimaryDark">#12B7F5</color>
     <color name="colorAccent">#FF4081</color>
     <color name="list_divider">#E6E6E6</color>
+    <color name="colorTabBG">#f6f6f6</color>
+    <color name="colorAppbarBG">#12B7F5</color>
+    <color name="colorWhite">#ffff</color>
+    <color name="colorDiv">#c8c8c8</color>
+    <color name="colorBlcak">#000</color>
 
 </resources>

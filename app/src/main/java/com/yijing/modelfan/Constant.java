@@ -8,8 +8,9 @@ import android.widget.Toast;
  */
 public class Constant {
 
-
+    public static int pageNum = 10;
     public static void showToast(Context mContext,String msg){
         Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
     }
+    public static boolean isLogin = false;
 }

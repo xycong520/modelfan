@@ -1,5 +1,6 @@
 package com.yijing.modelfan.adapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.yijing.modelfan.Constant;
 import com.yijing.modelfan.R;
 import com.yijing.modelfan.model.BeanModelFun;
+import com.yijing.modelfan.ui.activity.FunListActivity;
 import com.yijing.modelfan.ui.fragment.ADViewFragment;
 
 import java.util.List;
@@ -54,7 +56,7 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             case ITEM_VIEW_TYPE_KU_GRIDVIEW:
                 return new KuTypeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ku_type, parent, false));
             case ITEM_VIEW_TYPE_KU_RECOMNEND:
-                return new KuRecommendViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ku_recommend,parent, false));
+                return new KuRecommendViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ku_recommend, parent, false));
             case ITEM_VIEW_TYPE_KU_MODEL:
                 return new KuModelViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ku_model, parent, false));
             case ITEM_VIEW_TYPE_KU_TEXTTITLE:
@@ -67,10 +69,12 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof GridViewHolder) {
             ((GridViewHolder) holder).getTextView().setText(mData.get(position).getTextValue());
+            ((GridViewHolder) holder).getIvIcon().setImageResource(mData.get(position).getImgID());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Constant.showToast(mFragment.getActivity(),""+position);
+                    mFragment.getActivity().startActivity(new Intent(mFragment.getActivity(), FunListActivity.class));
+                    Constant.showToast(mFragment.getActivity(), "" + position);
                 }
             });
         } else if (holder instanceof SmallADViewHolder) {
@@ -81,12 +85,12 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             mFragment.getChildFragmentManager().beginTransaction().add(R.id.fragmentSmallAD, fragment).commit();
         } else if (holder instanceof HeadADViewHolder) {
             mFragment.getChildFragmentManager().beginTransaction().add(R.id.fragmentHeadAD, new ADViewFragment()).commit();
-        }else if(holder instanceof KuTypeViewHolder){
+        } else if (holder instanceof KuTypeViewHolder) {
             ((KuTypeViewHolder) holder).getTvTypeName().setText(mData.get(position).getTextValue());
-        }else if (holder instanceof KuModelViewHolder){
+        } else if (holder instanceof KuModelViewHolder) {
             ((KuModelViewHolder) holder).getIvPhoto().setImageResource(R.mipmap.ad_ku2);
             ((KuModelViewHolder) holder).getTvTypeName().setText(mData.get(position).getTextValue());
-        }else if (holder instanceof KuRecommendViewHolder){
+        } else if (holder instanceof KuRecommendViewHolder) {
             ((KuRecommendViewHolder) holder).getTvTypeName().setText(mData.get(position).getTextValue());
         }
     }
@@ -146,6 +150,7 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return layout;
         }
     }
+
     class KuTypeViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivPhoto;
@@ -165,6 +170,7 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return tvTypeName;
         }
     }
+
     class KuModelViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivPhoto;
@@ -184,6 +190,7 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return tvTypeName;
         }
     }
+
     class KuRecommendViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivPhoto;
@@ -203,6 +210,7 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return tvTypeName;
         }
     }
+
     class KuTextTitleViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvMore;
@@ -239,14 +247,20 @@ public class ModelKuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class GridViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
+        ImageView ivIcon;
 
         public GridViewHolder(View itemView) {
             super(itemView);
+            ivIcon = (ImageView) itemView.findViewById(R.id.ivIcon);
             textView = (TextView) itemView.findViewById(R.id.tvText);
         }
 
         public TextView getTextView() {
             return textView;
+        }
+
+        public ImageView getIvIcon() {
+            return ivIcon;
         }
     }
 }
